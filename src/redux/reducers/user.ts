@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   password: '',
 };
 
-const userData = (state = INITIAL_STATE, action: AnyAction) => {
+const user = (state = INITIAL_STATE, action: AnyAction) => {
   switch (action.type) {
     case SUBMIT_USER_DATA: {
       return {
@@ -19,4 +19,4 @@ const userData = (state = INITIAL_STATE, action: AnyAction) => {
   }
 };
 
-export default userData;
+export default user;

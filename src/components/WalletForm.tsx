@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ExpenseValues, Dispatch, GlobalState } from '../types';
 import { fetchAPI } from '../redux/actions';
-import { fetchCurrency } from '../services/currenciesAPI';
 
 const INITIAL_STATE = {
   id: 0,
@@ -18,20 +17,19 @@ function WalletForm() {
   const dispatch: Dispatch = useDispatch();
 
   const walletData = useSelector((globalState: GlobalState) => globalState
-    .walletData.currencies);
-  console.log(walletData);
+    .wallet.currencies);
 
   useEffect(() => {
     dispatch(fetchAPI());
   }, []);
 
-  const [expensesValue, setExpensesValue] = useState<ExpenseValues>(INITIAL_STATE);
+  const [expensesValues, setExpensesValues] = useState<ExpenseValues>(INITIAL_STATE);
 
   const handleChange = (
     { target }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name: targetName, value } = target;
-    setExpensesValue({ ...expensesValue, [targetName]: value });
+    setExpensesValues({ ...expensesValues, [targetName]: value });
   };
 
   return (
@@ -42,7 +40,7 @@ function WalletForm() {
           type="text"
           id="valor"
           name="valor"
-          value={ expensesValue.valor }
+          value={ expensesValues.valor }
           onChange={ handleChange }
           data-testid="value-input"
         />
@@ -53,7 +51,7 @@ function WalletForm() {
           type="text"
           id="description"
           name="description"
-          value={ expensesValue.description }
+          value={ expensesValues.description }
           onChange={ handleChange }
           data-testid="description-input"
         />
@@ -63,7 +61,7 @@ function WalletForm() {
         <select
           id="currency"
           name="currency"
-          value={ expensesValue.currency }
+          value={ expensesValues.currency }
           onChange={ handleChange }
           data-testid="currency-input"
         >
@@ -74,13 +72,43 @@ function WalletForm() {
           ))}
         </select>
       </label>
+      <label htmlFor="method">
+        Método de Pagamento:
+        <select
+          id="method"
+          name="method"
+          value={ expensesValues.method }
+          onChange={ handleChange }
+          data-testid="method-input"
+        >
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Cartão de crédito">Cartão de crédito</option>
+          <option value="Cartão de débito">Cartão de débito</option>
+        </select>
+      </label>
+      <label htmlFor="tag">
+        Tag:
+        <select
+          id="tag"
+          name="tag"
+          value={ expensesValues.tag }
+          onChange={ handleChange }
+          data-testid="tag-input"
+        >
+          <option value="Alimentação">Alimentação</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Trabalho">Trabalho</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Saúde">Saúde</option>
+        </select>
+      </label>
 
-      {/* <button
+      <button
         type="submit"
-        onClick={ handleSubmit }
+        // onClick={ handleSubmit }
       >
-        Entrar
-      </button> */}
+        Adicionar despesa
+      </button>
     </form>
   );
 }

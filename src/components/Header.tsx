@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { GlobalState } from '../types';
 
 function Header() {
-  const data = useSelector((globalState: GlobalState) => globalState.userData);
+  const data = useSelector((globalState: GlobalState) => globalState.user);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { UserData, Dispatch, Currencies, Currency, WalletState } from '../../types';
+import { UserData, Dispatch } from '../../types';
 import { fetchCurrency } from '../../services/currenciesAPI';
 
 export const SUBMIT_USER_DATA = 'SUBMIT_USER_DATA';
@@ -9,9 +9,9 @@ export const REQUEST_FAILED = 'REQUEST_FAILED';
 
 // ACTIONS DE USER
 
-export const submitUserData = (userData: UserData) => ({
+export const submitUserData = (user: UserData) => ({
   type: SUBMIT_USER_DATA,
-  payload: userData.email,
+  payload: user.email,
 });
 
 // ACTIONS DE WALLET

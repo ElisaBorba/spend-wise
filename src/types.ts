@@ -3,12 +3,11 @@ import { ThunkDispatch } from 'redux-thunk';
 
 export type UserData = {
   email: string,
-  password: string,
 };
 
 export type GlobalState = {
-  userData: UserData,
-  walletData: WalletState,
+  user: UserData,
+  wallet: WalletState,
 };
 
 export type WalletState = {

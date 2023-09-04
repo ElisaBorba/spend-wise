@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   idToEdit: 0,
 };
 
-const walletData = (state = INITIAL_STATE, action: AnyAction) => {
+const wallet = (state = INITIAL_STATE, action: AnyAction) => {
   console.log('action', action);
   switch (action.type) {
     case REQUEST_STARTED: {
@@ -38,4 +38,4 @@ const walletData = (state = INITIAL_STATE, action: AnyAction) => {
   }
 };
 
-export default walletData;
+export default wallet;
