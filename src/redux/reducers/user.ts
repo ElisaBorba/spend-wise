@@ -11,7 +11,7 @@ const userData = (state = INITIAL_STATE, action: AnyAction) => {
     case SUBMIT_USER_DATA: {
       return {
         ...state,
-        ...action.payload,
+        email: action.payload,
       };
     }
     default:
