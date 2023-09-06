@@ -1,5 +1,8 @@
 import { AnyAction } from 'redux';
-import { REQUEST_STARTED, REQUEST_SUCCESSFUL, REQUEST_FAILED } from '../actions/index';
+import { REQUEST_STARTED,
+  REQUEST_SUCCESSFUL,
+  REQUEST_FAILED,
+  EXPENSES_DATA } from '../actions/index';
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -8,10 +11,10 @@ const INITIAL_STATE = {
   expenses: [],
   editor: false,
   idToEdit: 0,
+  exchangeRates: {},
 };
 
 const wallet = (state = INITIAL_STATE, action: AnyAction) => {
-  console.log('action', action);
   switch (action.type) {
     case REQUEST_STARTED: {
       return {
@@ -31,6 +34,13 @@ const wallet = (state = INITIAL_STATE, action: AnyAction) => {
         ...state,
         isFetching: false,
         errorMessage: action.payload,
+      };
+    }
+    case EXPENSES_DATA: {
+      return {
+        ...state,
+        isFetching: false,
+        expenses: [...state.expenses, action.payload],
       };
     }
     default:

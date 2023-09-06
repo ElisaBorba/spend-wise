@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ExpenseValues, Dispatch, GlobalState } from '../types';
-import { fetchAPI } from '../redux/actions';
+import { fetchAPI, fetchExpensesAPI } from '../redux/actions';
 
 const INITIAL_STATE = {
   id: 0,
-  valor: '0',
-  description: 'Hot Dog',
+  value: '',
+  description: '',
   currency: 'USD',
   method: 'Dinheiro',
   tag: 'Alimentação',
@@ -18,6 +18,8 @@ function WalletForm() {
 
   const walletData = useSelector((globalState: GlobalState) => globalState
     .wallet.currencies);
+
+  const expenses = useSelector((globalState: GlobalState) => globalState.wallet.expenses);
 
   useEffect(() => {
     dispatch(fetchAPI());
@@ -32,17 +34,30 @@ function WalletForm() {
     setExpensesValues({ ...expensesValues, [targetName]: value });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const newId = expenses.length;
+
+    const newExpense = {
+      ...expensesValues,
+      id: newId,
+    };
+    dispatch(fetchExpensesAPI(newExpense));
+    setExpensesValues(INITIAL_STATE);
+  };
+
   return (
     <form>
-      <label htmlFor="valor">
+      <label htmlFor="value">
         Valor:
         <input
           type="text"
-          id="valor"
-          name="valor"
-          value={ expensesValues.valor }
+          id="value"
+          name="value"
+          value={ expensesValues.value }
           onChange={ handleChange }
           data-testid="value-input"
+          placeholder="0,00"
         />
       </label>
       <label htmlFor="description">
@@ -54,6 +69,7 @@ function WalletForm() {
           value={ expensesValues.description }
           onChange={ handleChange }
           data-testid="description-input"
+          placeholder="Hot Dog"
         />
       </label>
       <label htmlFor="currency">
@@ -105,7 +121,7 @@ function WalletForm() {
 
       <button
         type="submit"
-        // onClick={ handleSubmit }
+        onClick={ handleSubmit }
       >
         Adicionar despesa
       </button>

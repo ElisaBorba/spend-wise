@@ -17,16 +17,17 @@ export type WalletState = {
   expenses: ExpenseValues[],
   editor: boolean,
   idToEdit: number,
+  exchangeRates: Currencies,
 };
 
 export type ExpenseValues = {
   id: number;
-  valor: string;
+  value: string;
   description: string;
   currency: string;
   method: string;
   tag: string;
-  exchangeRates: any
+  exchangeRates?: any,
 };
 
 export type Currency = {

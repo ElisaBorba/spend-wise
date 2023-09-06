@@ -1,4 +1,4 @@
-import { UserData, Dispatch } from '../../types';
+import { UserData, Dispatch, ExpenseValues, Currencies } from '../../types';
 import { fetchCurrency } from '../../services/currenciesAPI';
 
 export const SUBMIT_USER_DATA = 'SUBMIT_USER_DATA';
@@ -6,6 +6,8 @@ export const SUBMIT_USER_DATA = 'SUBMIT_USER_DATA';
 export const REQUEST_STARTED = 'REQUEST_STARTED';
 export const REQUEST_SUCCESSFUL = 'REQUEST_SUCCESSFUL';
 export const REQUEST_FAILED = 'REQUEST_FAILED';
+
+export const EXPENSES_DATA = 'EXPENSES_DATA';
 
 // ACTIONS DE USER
 
@@ -38,6 +40,29 @@ export function fetchAPI() {
       const dataApi = await fetchCurrency();
       const dataArrayApi = Object.keys(dataApi);
       dispatch(requestSuccessful(dataArrayApi));
+    } catch (error: any) {
+      dispatch(requestFailed(error.message));
+    }
+  };
+}
+
+// ACTIONS DE EXPENSES
+
+export const submitExpensesValues = (expenses: ExpenseValues[]) => ({
+  type: EXPENSES_DATA,
+  payload: expenses,
+});
+
+export function fetchExpensesAPI(expenses: any) {
+  return async (dispatch: Dispatch) => {
+    try {
+      dispatch(requestStarted());
+      const dataApi = await fetchCurrency();
+      const newExpense = {
+        ...expenses,
+        exchangeRates: await dataApi,
+      };
+      dispatch(submitExpensesValues(newExpense));
     } catch (error: any) {
       dispatch(requestFailed(error.message));
     }
