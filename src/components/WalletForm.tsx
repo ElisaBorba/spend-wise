@@ -18,7 +18,6 @@ function WalletForm() {
 
   const walletData = useSelector((globalState: GlobalState) => globalState
     .wallet.currencies);
-
   const expenses = useSelector((globalState: GlobalState) => globalState.wallet.expenses);
 
   useEffect(() => {
@@ -69,7 +68,7 @@ function WalletForm() {
           value={ expensesValues.description }
           onChange={ handleChange }
           data-testid="description-input"
-          placeholder="Hot Dog"
+          placeholder="exemplo: McDonalds"
         />
       </label>
       <label htmlFor="currency">
