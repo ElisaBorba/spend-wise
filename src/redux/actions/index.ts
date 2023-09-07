@@ -1,4 +1,4 @@
-import { UserData, Dispatch, ExpenseValues, Currencies } from '../../types';
+import { UserData, Dispatch, ExpenseValues } from '../../types';
 import { fetchCurrency } from '../../services/currenciesAPI';
 
 export const SUBMIT_USER_DATA = 'SUBMIT_USER_DATA';

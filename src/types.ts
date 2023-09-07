@@ -5,11 +5,6 @@ export type UserData = {
   email: string,
 };
 
-export type GlobalState = {
-  user: UserData,
-  wallet: WalletState,
-};
-
 export type WalletState = {
   isFetching: boolean,
   currencies: string[],
@@ -18,6 +13,11 @@ export type WalletState = {
   editor: boolean,
   idToEdit: number,
   exchangeRates: Currencies,
+};
+
+export type GlobalState = {
+  user: UserData,
+  wallet: WalletState,
 };
 
 export type ExpenseValues = {
