@@ -12,12 +12,13 @@ function Table() {
           <tr>
             <th>Descrição</th>
             <th>Tag</th>
-            <th>Método de Pagamento</th>
+            <th>Método de pagamento</th>
             <th>Valor</th>
             <th>Moeda</th>
-            <th>Câmbio Utilizado</th>
-            <th>Valor Convertido</th>
-            <th>Moeda de Conversão</th>
+            <th>Câmbio utilizado</th>
+            <th>Valor convertido</th>
+            <th>Moeda de conversão</th>
+            <th>Editar/Excluir</th>
           </tr>
         </thead>
         <tbody>
@@ -42,7 +43,7 @@ function Table() {
                   {parseFloat(expense.exchangeRates[expense.currency].ask)
                     .toFixed(2)}
                 </td>
-                <th>{convertedValue}</th>
+                <td>{convertedValue}</td>
                 <td>Real</td>
                 <td>
                   <button>Editar</button>
