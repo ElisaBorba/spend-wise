@@ -1,9 +1,16 @@
-import { useSelector } from 'react-redux';
-import { GlobalState } from '../types';
+import { useSelector, useDispatch } from 'react-redux';
+import { GlobalState, Dispatch } from '../types';
+import { deleteExpense } from '../redux/actions/index';
 
 function Table() {
+  const dispatch: Dispatch = useDispatch();
   const expenses = useSelector((globalState: GlobalState) => globalState
     .wallet.expenses);
+
+  const handleDelete = (id: number) => {
+    const newExpenses = expenses.filter((expense) => expense.id !== id);
+    dispatch(deleteExpense(newExpenses));
+  };
 
   return (
     <div>
@@ -23,14 +30,14 @@ function Table() {
         </thead>
         <tbody>
           {expenses.map((expense) => {
-            const expenseValor = parseFloat(expense.value);
+            const expenseValue = parseFloat(expense.value);
             const currencyValue = parseFloat(expense
               .exchangeRates[expense.currency]?.ask);
 
-            if (Number.isNaN(expenseValor) || Number.isNaN(currencyValue)) {
+            if (Number.isNaN(expenseValue) || Number.isNaN(currencyValue)) {
               return null;
             }
-            const convertedValue = (expenseValor * currencyValue).toFixed(2);
+            const convertedValue = (expenseValue * currencyValue).toFixed(2);
 
             return (
               <tr key={ expense.id }>
@@ -47,7 +54,12 @@ function Table() {
                 <td>Real</td>
                 <td>
                   <button>Editar</button>
-                  <button>Excluir</button>
+                  <button
+                    data-testid="delete-btn"
+                    onClick={ () => handleDelete(expense.id) }
+                  >
+                    Excluir
+                  </button>
                 </td>
               </tr>
             );

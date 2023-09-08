@@ -7,7 +7,8 @@ export const REQUEST_STARTED = 'REQUEST_STARTED';
 export const REQUEST_SUCCESSFUL = 'REQUEST_SUCCESSFUL';
 export const REQUEST_FAILED = 'REQUEST_FAILED';
 
-export const EXPENSES_DATA = 'EXPENSES_DATA';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 // ACTIONS DE USER
 
@@ -49,7 +50,7 @@ export function fetchAPI() {
 // ACTIONS DE EXPENSES
 
 export const submitExpensesValues = (expenses: ExpenseValues[]) => ({
-  type: EXPENSES_DATA,
+  type: ADD_EXPENSE,
   payload: expenses,
 });
 
@@ -68,3 +69,8 @@ export function fetchExpensesAPI(expenses: any) {
     }
   };
 }
+
+export const deleteExpense = (expenses: ExpenseValues[]) => ({
+  type: DELETE_EXPENSE,
+  payload: expenses,
+});

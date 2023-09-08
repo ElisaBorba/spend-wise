@@ -35,14 +35,14 @@ function WalletForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newId = expenses.length;
+    // const newId = expenses.length;
 
-    const newExpense = {
-      ...expensesValues,
-      id: newId,
-    };
-    dispatch(fetchExpensesAPI(newExpense));
-    setExpensesValues(INITIAL_STATE);
+    // const newExpense = {
+    //   ...expensesValues,
+    //   id: newId,
+    // };
+    dispatch(fetchExpensesAPI(expensesValues));
+    setExpensesValues({ ...INITIAL_STATE, id: expensesValues.id + 1 });
   };
 
   return (

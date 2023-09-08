@@ -2,7 +2,8 @@ import { AnyAction } from 'redux';
 import { REQUEST_STARTED,
   REQUEST_SUCCESSFUL,
   REQUEST_FAILED,
-  EXPENSES_DATA } from '../actions/index';
+  ADD_EXPENSE,
+  DELETE_EXPENSE } from '../actions/index';
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -36,11 +37,18 @@ const wallet = (state = INITIAL_STATE, action: AnyAction) => {
         errorMessage: action.payload,
       };
     }
-    case EXPENSES_DATA: {
+    case ADD_EXPENSE: {
       return {
         ...state,
         isFetching: false,
         expenses: [...state.expenses, action.payload],
+      };
+    }
+    case DELETE_EXPENSE: {
+      return {
+        ...state,
+        isFetching: false,
+        expenses: action.payload,
       };
     }
     default:
