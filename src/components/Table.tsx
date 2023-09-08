@@ -12,6 +12,10 @@ function Table() {
     dispatch(deleteExpense(newExpenses));
   };
 
+  const handleEdit = (id: number) => {
+    const editedExpenses = expenses.filter((expense) => expense.id === id);
+  };
+
   return (
     <div>
       <table>
@@ -53,7 +57,12 @@ function Table() {
                 <td>{convertedValue}</td>
                 <td>Real</td>
                 <td>
-                  <button>Editar</button>
+                  <button
+                    data-testid="edit-btn"
+                    onClick={ () => handleEdit(expense.id) }
+                  >
+                    Editar
+                  </button>
                   <button
                     data-testid="delete-btn"
                     onClick={ () => handleDelete(expense.id) }
