@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { submitUserData } from '../redux/actions/index';
+import styles from './Login.module.css';
 
 const INITIAL_STATE = {
   email: '',
@@ -39,37 +40,46 @@ function Login() {
   };
 
   return (
-    <form onSubmit={ handleSubmit }>
-      <label htmlFor="email">
-        E-mail:
-        <input
-          type="text"
-          id="email"
-          name="email"
-          value={ email }
-          onChange={ handleChange }
-          data-testid="email-input"
-        />
-      </label>
-
-      <label htmlFor="Senha">
-        Senha:
-        <input
-          type="password"
-          id="Senha"
-          name="password"
-          value={ password }
-          onChange={ handleChange }
-          data-testid="password-input"
-        />
-      </label>
-      <button
-        type="submit"
-        disabled={ !isEmailValid() || !isPasswordValid() }
-        onClick={ handleSubmit }
-      >
-        Entrar
-      </button>
+    <form className={ styles.formContainer } onSubmit={ handleSubmit }>
+      <div className={ styles.containerInputs }>
+        <div className={ styles.inputWrapper }>
+          <input
+            className={ styles.input }
+            type="text"
+            id="email"
+            name="email"
+            value={ email }
+            onChange={ handleChange }
+            data-testid="email-input"
+            required
+          />
+          <label className={ styles.label } htmlFor="email">
+            E-mail:
+          </label>
+        </div>
+        <div className={ styles.inputWrapper }>
+          <input
+            className={ styles.input }
+            type="password"
+            id="Senha"
+            name="password"
+            value={ password }
+            onChange={ handleChange }
+            data-testid="password-input"
+            required
+          />
+          <label className={ styles.label } htmlFor="password">
+            Senha:
+          </label>
+        </div>
+        <button
+          type="submit"
+          disabled={ !isEmailValid() || !isPasswordValid() }
+          onClick={ handleSubmit }
+        >
+          Entrar
+        </button>
+      </div>
     </form>
   );
 }

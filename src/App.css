@@ -1,17 +1,18 @@
-.App {
+/* .App {
   text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
+
 
 body {
-  background-color: #7b7f86;
+  background-color: var(--white);
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
+/* @media ( prefers-reduced-motion : no-preference ) {
 
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -42,4 +43,4 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
+} */

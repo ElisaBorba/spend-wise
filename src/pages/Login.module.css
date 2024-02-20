@@ -1,0 +1,78 @@
+.formContainer {
+  align-items: center;
+  background-color: var(--bg);
+  display: flex;
+  font-family: Helvetica, sans-serif;
+  height: 100vh;
+  justify-content: center;
+}
+
+.containerInputs {
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  font-family: Helvetica, sans-serif;
+  height: 200px;
+  justify-content: center;
+  max-width: 250px;
+  padding: 4vw;
+  width: 70%;
+}
+
+.containerInputs button {
+  align-items: center;
+  background-color: var(--light-blue);
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  padding: 10px;
+  text-align: center;
+  width: 50%;
+
+}
+
+.containerInputs button:hover:enabled {
+  background-color: #2772b8;
+  cursor: pointer;
+}
+
+.inputWrapper {
+  display: inline-block;
+  line-height: 14px;
+  margin: 5px;
+  position: relative;
+}
+
+.inputWrapper label {
+  color: #bbb;
+  font-size: 13px;
+  font-weight: 700;
+  left: 20px;
+  pointer-events: none;
+  position: absolute;
+  text-transform: uppercase;
+  top: 14px;
+  transition: transform 0.3s ease;
+}
+
+.inputWrapper input {
+  border: 1px solid #bbb;
+  border-radius: 20px;
+  color: var(--gray);
+  font-size: 13px;
+  margin-bottom: 15px;
+  outline: none;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.inputWrapper input:focus {
+  border-color: var(--blue);
+}
+
+.inputWrapper input:focus + .label , .inputWrapper input:valid + .label {
+  color: var(--blue);
+  transform: translateY(-28px);
+}
