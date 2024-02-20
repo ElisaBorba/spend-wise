@@ -9,6 +9,7 @@ export const REQUEST_FAILED = 'REQUEST_FAILED';
 
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 // ACTIONS DE USER
 
@@ -47,7 +48,7 @@ export function fetchAPI() {
   };
 }
 
-// ACTIONS DE EXPENSES
+// ACTIONS DAS EXPENSES
 
 export const submitExpensesValues = (expenses: ExpenseValues[]) => ({
   type: ADD_EXPENSE,
@@ -73,4 +74,10 @@ export function fetchExpensesAPI(expenses: any) {
 export const deleteExpense = (expenses: ExpenseValues[]) => ({
   type: DELETE_EXPENSE,
   payload: expenses,
+});
+
+export const editExpense = (expenses: ExpenseValues[]) => ({
+  type: EDIT_EXPENSE,
+  payload: expenses,
+  // editor:
 });

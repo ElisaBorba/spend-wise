@@ -18,13 +18,12 @@ function WalletForm() {
 
   const walletData = useSelector((globalState: GlobalState) => globalState
     .wallet.currencies);
-  const expenses = useSelector((globalState: GlobalState) => globalState.wallet.expenses);
+
+  const [expensesValues, setExpensesValues] = useState<ExpenseValues>(INITIAL_STATE);
 
   useEffect(() => {
     dispatch(fetchAPI());
   }, []);
-
-  const [expensesValues, setExpensesValues] = useState<ExpenseValues>(INITIAL_STATE);
 
   const handleChange = (
     { target }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -35,12 +34,6 @@ function WalletForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // const newId = expenses.length;
-
-    // const newExpense = {
-    //   ...expensesValues,
-    //   id: newId,
-    // };
     dispatch(fetchExpensesAPI(expensesValues));
     setExpensesValues({ ...INITIAL_STATE, id: expensesValues.id + 1 });
   };

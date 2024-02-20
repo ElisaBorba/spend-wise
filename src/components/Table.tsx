@@ -1,19 +1,21 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { GlobalState, Dispatch } from '../types';
-import { deleteExpense } from '../redux/actions/index';
+import { deleteExpense, editExpense } from '../redux/actions/index';
 
 function Table() {
   const dispatch: Dispatch = useDispatch();
   const expenses = useSelector((globalState: GlobalState) => globalState
     .wallet.expenses);
 
+  const handleEdit = (id: number) => {
+    const editedExpenses = expenses.find((expense) => expense.id === id);
+
+    // dispatch(editExpense(editedExpenses));
+  };
+
   const handleDelete = (id: number) => {
     const newExpenses = expenses.filter((expense) => expense.id !== id);
     dispatch(deleteExpense(newExpenses));
-  };
-
-  const handleEdit = (id: number) => {
-    const editedExpenses = expenses.filter((expense) => expense.id === id);
   };
 
   return (
