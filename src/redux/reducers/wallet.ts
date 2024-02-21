@@ -3,8 +3,7 @@ import { REQUEST_STARTED,
   REQUEST_SUCCESSFUL,
   REQUEST_FAILED,
   ADD_EXPENSE,
-  DELETE_EXPENSE,
-  EDIT_EXPENSE } from '../actions/index';
+  DELETE_EXPENSE } from '../actions/index';
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -52,14 +51,7 @@ const wallet = (state = INITIAL_STATE, action: AnyAction) => {
         expenses: action.payload,
       };
     }
-    case EDIT_EXPENSE: {
-      return {
-        ...state,
-        isFetching: false,
-        editor: action.payload,
-        // idToEdit: ,
-      };
-    }
+
     default:
       return state;
   }

@@ -1,0 +1,21 @@
+.header {
+  align-items: center;
+  background-color: var(--bg);
+  box-shadow: 0 5px 20px 0 black;
+  color: var(--light-blue);
+  display: flex;
+  font-family: Helvetica, sans-serif;
+  height: 9vw;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  width: 100vw;
+}
+
+.header strong {
+  font-weight: 1000;
+}
+
+.header h4 {
+  font-style: italic;
+}
+

@@ -1,17 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { GlobalState, Dispatch } from '../types';
-import { deleteExpense, editExpense } from '../redux/actions/index';
+import { deleteExpense } from '../redux/actions/index';
+import styles from './Table.module.css';
 
 function Table() {
   const dispatch: Dispatch = useDispatch();
   const expenses = useSelector((globalState: GlobalState) => globalState
     .wallet.expenses);
-
-  const handleEdit = (id: number) => {
-    const editedExpenses = expenses.find((expense) => expense.id === id);
-
-    // dispatch(editExpense(editedExpenses));
-  };
 
   const handleDelete = (id: number) => {
     const newExpenses = expenses.filter((expense) => expense.id !== id);
@@ -19,7 +14,7 @@ function Table() {
   };
 
   return (
-    <div>
+    <div className={ styles.table }>
       <table>
         <thead>
           <tr>
@@ -31,7 +26,7 @@ function Table() {
             <th>Câmbio utilizado</th>
             <th>Valor convertido</th>
             <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody>
@@ -59,12 +54,6 @@ function Table() {
                 <td>{convertedValue}</td>
                 <td>Real</td>
                 <td>
-                  <button
-                    data-testid="edit-btn"
-                    onClick={ () => handleEdit(expense.id) }
-                  >
-                    Editar
-                  </button>
                   <button
                     data-testid="delete-btn"
                     onClick={ () => handleDelete(expense.id) }
