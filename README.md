@@ -11,16 +11,14 @@ A aplicação acessa um endpoint da API de Cotações de Moedas para obter infor
 * Converter o total de gastos para uma moeda escolhida pelo usuário.
 
 ## 🛠 Tecnologias utilizadas
-* React
 
-* Redux
-
-* HTML5
-
+* [React](https://reactjs.org/) - Biblioteca JavaScript/TypeScript para construção da interface do usuário.
+* [Redux](https://redux.js.org/) - Gerenciador de estado para aplicações JavaScript/TypeScript.
+* [Vitest](https://vitest.dev/) - Framework de teste para aplicações React.
+* [Jest](https://jestjs.io/) - Framework de testes.
+* [Testing Library](https://testing-library.com/) - Conjunto de ferramentas para testes de componentes React.
+* [TypeScript](https://www.typescriptlang.org/)
 * CSS Modules
-
-* TypeScript
-
 * API de Cotações de Moedas:
   
 A aplicação utiliza uma [API de Cotações](https://economia.awesomeapi.com.br/json/all) de Moedas para obter informações sobre as moedas. Esta API fornece dados atualizados sobre diversas moedas, incluindo nome, código, valor de compra e venda, variação, entre outros.
