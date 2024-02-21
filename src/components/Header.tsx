@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { GlobalState } from '../types';
+import styles from './Header.module.css';
 
 function Header() {
   const data = useSelector((globalState: GlobalState) => globalState.user);
@@ -22,7 +23,7 @@ function Header() {
   const totalExpense = calculateTotalExpense();
 
   return (
-    <div>
+    <div className={ styles.header }>
       <h3 data-testid="email-field">{`Email: ${data.email}`}</h3>
       <h4>
         {'Total: '}

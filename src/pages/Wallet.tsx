@@ -1,13 +1,16 @@
 import Header from '../components/Header';
 import WalletForm from '../components/WalletForm';
 import Table from '../components/Table';
+import styles from './Wallet.module.css';
 
 function Wallet() {
   return (
     <main>
       <Header />
-      <WalletForm />
-      <Table />
+      <div className={ styles.content }>
+        <WalletForm />
+        <Table />
+      </div>
     </main>
   );
 }

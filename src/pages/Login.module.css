@@ -58,7 +58,7 @@
 }
 
 .inputWrapper input {
-  border: 1px solid #bbb;
+  border: var(--border);
   border-radius: 20px;
   color: var(--gray);
   font-size: 13px;

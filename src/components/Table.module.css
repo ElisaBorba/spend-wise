@@ -1,0 +1,38 @@
+.table {
+  font-family: Helvetica, sans-serif;
+  margin: 15px;
+  max-width: 400px;
+}
+
+.table table {
+  width: 100%;
+}
+
+.table th , .table td {
+  background-color: var(--gray-150);
+  border-bottom: 1px solid var(--white);
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--gray-100);
+  color: var(--light-blue);
+  padding: 15px;
+}
+
+.table button {
+  align-items: center;
+  background-color: var(--light-blue);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 10px;
+  text-align: center;
+}
+
+.table button:hover {
+  background-color: #2772b8;
+  cursor: pointer;
+}
