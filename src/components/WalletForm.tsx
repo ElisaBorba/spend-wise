@@ -14,6 +14,8 @@ const INITIAL_STATE = {
   exchangeRates: {},
 };
 
+const errorMessage = 'o campo "Valor", precisa ser numérico! Exemplo: 5000.00';
+
 function WalletForm() {
   const dispatch: Dispatch = useDispatch();
 
@@ -21,6 +23,7 @@ function WalletForm() {
     .wallet.currencies);
 
   const [expensesValues, setExpensesValues] = useState<ExpenseValues>(INITIAL_STATE);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAPI());
@@ -30,13 +33,25 @@ function WalletForm() {
     { target }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name: targetName, value } = target;
-    setExpensesValues({ ...expensesValues, [targetName]: value });
+    const formattedValue = value.replace(',', '.');
+    setExpensesValues({ ...expensesValues, [targetName]: formattedValue });
+
+    if (targetName === 'value' && Number.isNaN(Number(formattedValue))) {
+      setShowErrorMessage(true);
+    } else {
+      setShowErrorMessage(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(fetchExpensesAPI(expensesValues));
-    setExpensesValues({ ...INITIAL_STATE, id: expensesValues.id + 1 });
+    const isValidValue = /^\d+(\.\d{1,2})?$/.test(expensesValues.value);
+
+    if (isValidValue) {
+      setShowErrorMessage(false);
+      dispatch(fetchExpensesAPI(expensesValues));
+      setExpensesValues({ ...INITIAL_STATE, id: expensesValues.id + 1 });
+    }
   };
 
   return (
@@ -51,7 +66,7 @@ function WalletForm() {
             value={ expensesValues.value }
             onChange={ handleChange }
             data-testid="value-input"
-            placeholder="0,00"
+            placeholder="0.00"
           />
         </label>
         <label htmlFor="description">
@@ -117,10 +132,12 @@ function WalletForm() {
       </div>
       <button
         type="submit"
+        disabled={ showErrorMessage }
         onClick={ handleSubmit }
       >
         Adicionar despesa
       </button>
+      {showErrorMessage && <p>{errorMessage}</p>}
     </form>
   );
 }

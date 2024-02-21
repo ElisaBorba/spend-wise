@@ -40,11 +40,10 @@ function Login() {
   };
 
   return (
-    <form className={ styles.formContainer } onSubmit={ handleSubmit }>
+    <form className={ styles.loginContainer } onSubmit={ handleSubmit }>
       <div className={ styles.containerInputs }>
         <div className={ styles.inputWrapper }>
           <input
-            className={ styles.input }
             type="text"
             id="email"
             name="email"
@@ -59,7 +58,6 @@ function Login() {
         </div>
         <div className={ styles.inputWrapper }>
           <input
-            className={ styles.input }
             type="password"
             id="Senha"
             name="password"

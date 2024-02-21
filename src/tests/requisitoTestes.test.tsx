@@ -3,8 +3,8 @@ import { screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import mockData from './mockData';
 import { renderWithRouterAndRedux } from './renderWith';
-import App from '../../App';
-import * as APIModule from '../../services/currenciesAPI';
+import App from '../App';
+import * as APIModule from '../services/currenciesAPI';
 
 beforeEach(() => {
   vi.spyOn(APIModule, 'fetchCurrency').mockResolvedValue(mockData);
@@ -19,7 +19,7 @@ describe('Testa a página de entrada \'Login\'', () => {
     renderWithRouterAndRedux(<App />);
 
     const email = screen.getByRole('textbox', { name: /e-mail:/i });
-    const password = screen.getByLabelText(/senha:/i);
+    const password = screen.getByTestId('password-input');
     const submitBtn = screen.getByRole('button', { name: /entrar/i });
 
     expect(email).toBeInTheDocument();

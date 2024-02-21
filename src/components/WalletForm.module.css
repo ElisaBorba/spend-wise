@@ -17,8 +17,6 @@
 
 .inputText {
   align-items: center;
-
-  /* background-color: blueviolet; */
   display: flex;
   flex: wrap;
   flex-direction: row;
@@ -28,7 +26,7 @@
 
 .formContainer input {
   border: var(--border);
-  border-radius: 20px;
+  border-radius: 5px;
   color: var(--black);
   font-size: 13px;
   outline: none;
@@ -38,7 +36,7 @@
 .formContainer select {
   background-color: var(--white);
   border: var(--border);
-  border-radius: 20px;
+  border-radius: 5px;
   color: var(--black);
   font-size: 13px;
   outline: none;
@@ -49,7 +47,7 @@
   align-items: center;
   background-color: var(--light-blue);
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 15px;
   margin-top: 15px;
